@@ -1,2 +1,2 @@
-lien=:http://localhost/cours/Projet Infrastructure/index.php
+lien=:https://j.piquerel.fr/infrastructure/index.php
 description=:Projet de cour qui est une application réalisant la gestion de jeux vidéos.

@@ -1,0 +1,32 @@
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-brand img {
+    margin-right: 15px;
+}
+
+@media (max-width: 767px) {
+    .navbar-brand img {
+        margin-right: 0;
+    }
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.add-game-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
