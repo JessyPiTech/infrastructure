@@ -1,20 +1,84 @@
+/* Réglages généraux */
+main {
+   min-height: 60vh;
+    flex: 1;
+    margin: 5% 0; /* Modification de la marge verticale, la marge horizontale est laissée intacte */
+}
+
+body {
+    margin: 0;
+}
+
 header {
-    position: fixed;
+    margin: 0;
+    padding: 0;
     top: 0;
     width: 100%;
     z-index: 1000;
 }
 
+/* Barre de navigation */
+.navbar {
+    background-color: #000000;
+    padding: 10px 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alignement vertical au centre */
+}
+
+.navbar-nav-test {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    display: inline-block; /* Met les éléments de la liste en ligne */
+    margin: 0 10px; /* Ajoute de la marge horizontale entre les éléments */
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-brand {
+    color: #fff;
+    font-size: 24px;
+}
+
 .navbar-brand img {
-    margin-right: 15px;
+    height: 60px;
 }
 
-@media (max-width: 767px) {
-    .navbar-brand img {
-        margin-right: 0;
-    }
+.navbar-toggler {
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 24px;
 }
 
+.navbar-toggler:focus {
+    outline: none;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 10px;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+    font-size: 18px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ccc;
+}
+
+/* Cartes */
 .card {
     margin-bottom: 20px;
 }
@@ -24,9 +88,132 @@ header {
     object-fit: cover;
 }
 
+/* Bouton d'ajout de jeu */
 .add-game-button {
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 1000;
+}
+
+.container_inscription_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Conteneur pour la carte */
+.card_container {
+    position: relative;
+    width: 420px;
+    perspective: 1000px;
+}
+
+/* Style pour les deux faces de la carte */
+.form_card {
+    width: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+    border-radius: 10px;
+    padding: 20px; /* Réduction des paddings */
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrage vertical */
+    height: auto; /* Hauteur dynamique */
+}
+
+.front {
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    text-align: center;
+}
+
+.back {
+    background-color: rgb(140, 140, 140); /* Couleur différente pour le dos */
+    transform: rotateY(180deg);
+    color: #fff;
+    text-align: center;
+}
+
+/* Effet de rotation */
+.card_container.show-login .front {
+    transform: rotateY(180deg);
+}
+
+.card_container.show-login .back {
+    transform: rotateY(0deg);
+}
+
+.card_container.show-register .front {
+    transform: rotateY(0deg);
+}
+
+.card_container.show-register .back {
+    transform: rotateY(-180deg);
+}
+
+/*inscription css*/
+.container_inscription h2 {
+    font-size: 28px; /* Réduction de la taille de la police pour économiser de l'espace */
+    margin: 0 0 20px 0; /* Réduction de la marge inférieure */
+}
+.form-group{
+    text-align: center;
+    align-items: center;
+}
+.container_inscription .form-group {
+    width: 100%;
+    margin: 15px 0; /* Réduction des marges */
+}
+
+.container_inscription .btn-inscription {
+    width: 100%;
+    height: 40px; /* Augmentation de la hauteur pour un bouton plus grand et plus visible */
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #000000;
+    font-weight: 600;
+}
+
+.container_inscription .login-link {
+    font-size: 14.5px;
+    margin: 20px 0 15px;
+}
+
+.login-link p {
+    color: #fff;
+    margin: 0; /* Suppression des marges */
+}
+
+.login-link p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link p a:hover {
+    text-decoration: underline;
+}
+
+.form-group input {
+    width: 100%;
+    height: 40px; /* Augmentation de la hauteur pour un champ plus grand */
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    padding: 10px; /* Ajout de padding pour plus de confort */
+    color: #fff; /* Couleur du texte */
+}
+
+.form-group input::placeholder {
+    color: #fff;
 }
