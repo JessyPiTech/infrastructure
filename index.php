@@ -1,7 +1,8 @@
 
-
-<?php require_once "function.php";?>
+<?php require_once "connec.php";?>
 <?php require_once "header.php";?>
+<?php require_once "function.php";?>
+
 
 <main class="container mt-5">
     <div class="container mt-5">
