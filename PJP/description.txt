@@ -1,2 +1,2 @@
-lien=:https://j.piquerel.fr/infrastructure/index.php
+lien=:https://piquerel.ovh/infrastructure/index.php
 description=:Projet de cour qui est une application réalisant la gestion de jeux vidéos.

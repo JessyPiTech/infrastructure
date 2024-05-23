@@ -1,9 +1,6 @@
 <?php
 // Paramètres de connexion à la base de données
-$serveur = "localhost";
-$utilisateur = "admin";
-$mot_de_passe = "5331jcj9";
-$base_de_donnees = "infrastructure";
+require_once "credentials.php";
 $connexion = mysqli_connect($serveur, $utilisateur, $mot_de_passe, $base_de_donnees);
 // Déclaration de la variable $resultat en dehors du bloc conditionnel
 $resultat = null;
@@ -103,26 +100,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 
-// Traitement de la déconnexion
 if (isset($_POST["logout"])) {
-    // Détruire toutes les variables de session
-    $_SESSION = array();
-
-    // Si vous voulez détruire complètement la session, effacez également le cookie de session.
-    // Notez que cela détruira la session et pas seulement les données de session !
-    if (ini_get("session.use_cookies")) {
-        $params = session_get_cookie_params();
-        setcookie(session_name(), '', time() - 42000,
-            $params["path"], $params["domain"],
-            $params["secure"], $params["httponly"]
-        );
-    }
-
-    // Finalement, détruire la session
-    session_destroy();
-    
+    // Définir le cookie 'connected' comme faux
+    $_SESSION['connected'] = false;
     // Rediriger vers la page de connexion ou une autre page appropriée
-    header("Location: connecte.php"); // Modifier login.php selon le nom de votre page de connexion
+    header("Location: ./connecte.php"); // Modifier selon le nom de votre page de connexion
     exit;
 }
 ?>

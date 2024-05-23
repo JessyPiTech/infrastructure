@@ -1,21 +1,20 @@
 <?php
 session_start();
 // Fonction pour se connecter à la base de données
-function connectDB() {
-    $host = "localhost";
-    $username = "admin";
-    $password_db = "5331jcj9";
-    $dbname = "infrastructure";
-    $conn = new mysqli($host, $username, $password_db, $dbname);
+
+//je l'ai remis par se que j'en besoin que ici
+//puisse que tout mes pages rediriges vers la si on n'est pas connecte dans les cookies
+function connectDB() {  
+    require_once "credentials.php";
+    $conn = new mysqli($serveur, $utilisateur, $mot_de_passe, $base_de_donnees);
     if ($conn->connect_error) {
-        die("Erreur de connexion à la base de données : " . $conn->connect_error);
+        echo'Erreur de connexion à la base de données : " . $conn->connect_error"';
     }
     return $conn;
 }
 $conn = connectDB();
-?>
 
-<?php require_once "header.php";?>
+require_once "header.php";?>
 
 <main>
     <div class="container">
@@ -114,7 +113,7 @@ $conn = connectDB();
                 echo $password,$stored_password;
                 if ($password == $stored_password) {
                     echo "4";
-                    $_SESSION['connect'] = true;
+                    $_SESSION['connected'] = true;
                     header("Location: index.php"); 
                     exit;
                 } else {
