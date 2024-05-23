@@ -344,3 +344,11 @@ header {
     height:20px;
     width:20px;
 }
+
+.btn_modif img {
+    display: block; 
+}
+
+.btn_modif:hover img {
+    content: url('asset/img/icon-stylo-noir.png');
+}
