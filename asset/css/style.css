@@ -1,20 +1,85 @@
+/* Réglages généraux */
+main {
+    min-height: 60vh;
+    flex: 1;
+    margin: 5% 0;
+}
+
+body {
+    margin: 0;
+    font-family: ui-sans-serif,-apple-system,system-ui,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,Helvetica,Apple Color Emoji,Arial,Segoe UI Emoji,Segoe UI Symbol;
+}
+
 header {
-    position: fixed;
+    margin: 0;
+    padding: 0;
     top: 0;
     width: 100%;
     z-index: 1000;
 }
 
+/* Barre de navigation */
+.navbar {
+    background-color: #000000;
+    padding: 10px 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-nav-test {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-brand {
+    color: #fff;
+    font-size: 24px;
+}
+
 .navbar-brand img {
-    margin-right: 15px;
+    height: 60px;
 }
 
-@media (max-width: 767px) {
-    .navbar-brand img {
-        margin-right: 0;
-    }
+.navbar-toggler {
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 24px;
 }
 
+.navbar-toggler:focus {
+    outline: none;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 10px;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+    font-size: 18px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ccc;
+}
+
+/* Cartes */
 .card {
     margin-bottom: 20px;
 }
@@ -24,9 +89,258 @@ header {
     object-fit: cover;
 }
 
+/* Bouton d'ajout de jeu */
 .add-game-button {
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 1000;
+}
+
+
+.container_inscription_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    
+}
+
+/* Conteneur pour la carte */
+.card_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 420px;
+    perspective: 1000px;
+}
+
+/* Style pour les deux faces de la carte */
+.form_card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1); /* Ajout de l'ombre */
+}
+
+.front {
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    text-align: center;
+}
+
+.back {
+    background-color: rgb(255, 255, 255);
+    transform: rotateY(180deg);
+    color: #000000;
+    text-align: center;
+}
+
+/* Effet de rotation */
+.card_container.show-login .front {
+    transform: rotateY(180deg);
+}
+
+.card_container.show-login .back {
+    transform: rotateY(0deg);
+}
+
+.card_container.show-register .front {
+    transform: rotateY(0deg);
+}
+
+.card_container.show-register .back {
+    transform: rotateY(-180deg);
+}
+
+/*inscription css*/
+.container_inscription h2 {
+    font-size: 28px;
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+/*inscription css*/
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligner les éléments horizontalement à gauche */
+    width: 100%;
+    margin: 15px 0;
+}
+
+.form-group label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.form-group p {
+    margin: 5px 0 0; /* Modifier les marges */
+}
+
+.form-group input {
+    width: calc(100% - 20px);
+    max-width: 400px;
+    height: 35px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    padding: 5px 10px;
+    color: #000000;
+    box-sizing: border-box;
+    margin: 0 auto;
+    border: 2px solid #000000;
+}
+
+.form-group input::placeholder {
+    color: #000000;
+}
+.container_inscription .btn-inscription {
+    width: 100%;
+    height: 40px;
+    background-color: #000000;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.container_inscription .login-link {
+    font-size: 14.5px;
+    margin: 20px 0 15px;
+    text-align: center;
+
+}
+
+.login-link p {
+    color: #000000;
+    margin: 5px 0 0; /* Réduit la marge pour coller davantage au-dessus de la boîte */
+}
+
+.login-link p a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link p a:hover {
+    text-decoration: underline;
+}
+
+.btn_add {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;
+}
+
+.btn_add img {
+    max-width: 100%; /* Pour que l'image ne dépasse pas les dimensions du bouton */
+    max-height: 100%; /* Pour que l'image ne dépasse pas les dimensions du bouton */
+}
+
+.icone{
+    width: 100px;
+}
+
+/* Style pour la pop-up */
+.modal {
+    display: none; /* Par défaut, la pop-up est masquée */
+    position: fixed; /* Position fixe pour couvrir toute la fenêtre */
+    z-index: 1000; /* Une valeur élevée pour être sûr qu'elle est au-dessus du reste du contenu */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Centre verticalement et horizontalement */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px; /* Largeur maximale de la pop-up */
+}
+.delete {
+    color: #ff3f3f;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.delete:hover,
+.delete:focus {
+    color: rgb(255, 0, 0);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr)); /* Quatre colonnes de largeur minimale 200px et maximale égale */
+    gap: 20px; /* Espacement entre les cartes */
+    margin: 0 auto; /* Décalage sur les bords */
+    max-width: 1200px; /* Limite de largeur pour la grille */
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.card img {
+    flex: 1;
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.btn_modif{
+    height:20px;
+    width:20px;
 }

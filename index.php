@@ -1,122 +1,140 @@
-
-<?php require_once "connec.php";?>
+<?php require_once "../connec.php";?>
 <?php require_once "header.php";?>
 <?php require_once "function.php";?>
+<?php require_once "./connec.php";?>
 
 
-<main class="container mt-5">
-    <div class="container mt-5">
-        <h2>Liste des jeux</h2>
-        <div class="row">
-            <?php while ($jeu = mysqli_fetch_assoc($resultat)): ?>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class="card-img-top" src="<?php echo $jeu['game_image']; ?>" alt="<?php echo $jeu['game_name']; ?>">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $jeu['game_name']; ?></h5>
-                            <p class="card-text">Développeur: <?php echo $jeu['game_publisher']; ?></p>
-                            <p class="card-text">Note: <?php echo $jeu['game_note']; ?>/5</p>
-                            <p class="card-text">Id: <?php echo $jeu['game_id']; ?></p>
+<main>
+    <div class="card-container">
+        <?php while ($jeu = mysqli_fetch_assoc($resultat)): ?>
+            <div class="card">
+                <?php $image_url = !empty($jeu['game_image']) ? $jeu['game_image'] : 'https://placehold.co/300x300';?>
+                <img class="card-img-top" src="<?php echo $image_url; ?>" alt="<?php echo $jeu['game_name']; ?>" onerror="this.onerror=null; this.src='https://placehold.co/300x300';">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $jeu['game_name']; ?></h5>
+                    <p class="card-text">Développeur: <?php echo $jeu['game_publisher']; ?></p>
+                    <p class="card-text">Note: <?php echo $jeu['game_note']; ?>/5</p>
+
+                    <!-- Bouton de suppression -->
+                    <span class="delete" onclick="openConfirmationModal(<?php echo $jeu['game_id']; ?>)">&times;</span>
+                    <div id="confirmationModal" class="modal">
+                        <!--1-->
+                        <div class="modal-content">
+                            <span id="closeConfirmationModal" class="close">&times;</span>
+                            <h2>Confirmer la suppression</h2>
+                            <p>Êtes-vous sûr de vouloir supprimer ce jeu?</p>
+                            <div>
+                                <button id="yesConfirmationModal" class="btn btn-danger">Oui</button>
+                                <button id="noConfirmationModal" class="btn btn-secondary">Non</button>
+                            </div>
                         </div>
+                        <!---->
                     </div>
                 </div>
-            <?php endwhile; ?>
-        </div>
+                <!--Bouton modif--> 
+                <div id="btn_modif" class="btn_modif">
+                    <img src="asset/img/icon-stylo-blanc.png" alt="Modifier le jeu">
+                </div>
+            </div>
+        <?php endwhile; ?>
     </div>
-    <div class="container mt-5">
-        <h2>Ajouter un jeu</h2>
-        <!-- Formulaire d'ajout de jeu -->
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="game_name">Nom du jeu:</label>
-                <input type="text" class="form-control" id="game_name" name="game_name">
-            </div>
-            <div class="form-group">
-                <label for="game_publisher">Développeur du jeu:</label>
-                <input type="text" class="form-control" id="game_publisher" name="game_publisher">
-            </div>
-            <div class="form-group">
-                <label for="game_note">Note du jeu:</label>
-                <input type="number" class="form-control" id="game_note" name="game_note" min="0" max="5">
-            </div>
-            <div class="form-group">
+    
+    <!-- Bouton d'ajout de jeu -->
+    <div id="btn_add" class="btn_add">
+        <img src="asset/img/plus.png" alt="Ajout de jeux" class="icone">
+    </div>
+
+    <!-- Fenêtre modale pour l'ajout de jeu -->
+    <div id="addGameModal" class="modal">
+        <div class="modal-content">
+
+        <!--2-->
+        <span id="azerty" class="close">&times;</span>
+            <h2>Ajouter un jeu</h2>
+            <!-- Formulaire d'ajout de jeu -->
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="game_name">Nom du jeu:</label>
+                    <input type="text" class="form-control" id="game_name" name="game_name">
+                </div>
+                <div class="form-group">
+                    <label for="game_publisher">Développeur du jeu:</label>
+                    <input type="text" class="form-control" id="game_publisher" name="game_publisher">
+                </div>
+                <div class="form-group">
+                    <label for="game_note">Note du jeu:</label>
+                    <input type="number" class="form-control" id="game_note" name="game_note" min="0" max="5">
+                </div>
+                <div class="form-group">
                 <label for="game_image">Image du jeu:</label>
-                <input type="file" class="form-control" id="game_image" name="game_image">
+                <input type="file" class="form-control" id="game_image" name="game_image" accept=".png, .jpg, .jpeg" onchange="validateFileType()">
             </div>
-            <button type="submit" class="btn btn-primary" name="ajouter">Ajouter</button>
-        </form>
-    </div>
+           
+<script>
+        // Obtenez la référence du bouton d'ajout
+        var addButton = document.getElementById("btn_add");
 
-    <div class="container mt-5">
-    <h2>Modifier un jeu</h2>
-    <!-- Formulaire de modification de jeu -->
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="game_id_modify">ID du jeu à modifier:</label>
-            <input type="text" class="form-control" id="game_id_modify" name="game_id_modify">
-        </div>
+        // Obtenez la référence de la fenêtre modale
+        var modal = document.getElementById("addGameModal");
 
-        
-                <div class="form-group">
-                    <label for="game_name_modify">Nom du jeu:</label>
-                    <input type="text" class="form-control" id="game_name_modify" name="game_name_modify" >
-                </div>
-                <div class="form-group">
-                    <label for="game_publisher_modify">Développeur du jeu:</label>
-                    <input type="text" class="form-control" id="game_publisher_modify" name="game_publisher_modify" >
-                </div>
-                <div class="form-group">
-                    <label for="game_note_modify">Note du jeu:</label>
-                    <input type="number" class="form-control" id="game_note_modify" name="game_note_modify" min="0" max="5" >
-                </div>
-                <div class="form-group">
-                    <label for="game_image_modify">Image du jeu:</label>
-                    <input type="file" class="form-control" id="game_image_modify" name="game_image_modify">
-                </div>
-                <?php
-        // Vérifier si l'ID du jeu à modifier est soumis
-        if (isset($_POST["game_id_modify"])) {
-            // Récupérer l'ID du jeu à partir du formulaire
-            $game_id_to_modify = intval($_POST["game_id_modify"]);
-            // Requête SQL pour récupérer les informations du jeu à modifier
-            $sql_select_game_to_modify = "SELECT * FROM video_game WHERE game_id = $game_id_to_modify";
-            $result_game_to_modify = mysqli_query($connexion, $sql_select_game_to_modify);
-            // Vérifier si des données sont retournées
-            if (mysqli_num_rows($result_game_to_modify) > 0) {
-                // Récupérer les données du jeu
-                $game_to_modify = mysqli_fetch_assoc($result_game_to_modify);
-        ?>
-        <?php
-            } else {
-                echo "Aucun jeu trouvé avec l'ID spécifié.";
+        // Obtenez la référence de l'élément de fermeture
+        var closeButton2 = document.getElementById("azerty");
+
+        // Fonction pour afficher la fenêtre modale
+        addButton.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // Fonction pour masquer la fenêtre modale lorsqu'on clique sur le bouton de fermeture
+        closeButton2.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Fonction pour masquer la fenêtre modale lorsqu'on clique en dehors de celle-ci
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
             }
         }
-        ?>
-        <button type="submit" class="btn btn-primary" name="modifier">Modifier</button>
-    </form>
-</div>
 
-    <div class="container mt-5">
-        <h2>Supprimer un jeu</h2>
-        <!-- Formulaire de suppression de jeu -->
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group">
-                <label for="game_id_to_delete">ID du jeu à supprimer:</label>
-                <input type="text" class="form-control" id="game_id_to_delete" name="game_id_to_delete">
-            </div>
-            <button type="submit" class="btn btn-danger" name="supprimer">Supprimer</button>
-        </form>
-    </div>
+        function openConfirmationModal(gameId) {
+    var modal = document.getElementById("confirmationModal");
+    //1
+    var closeButton = document.getElementById("closeConfirmationModal");
+    var yesButton = document.getElementById("yesConfirmationModal");
+    var noButton = document.getElementById("noConfirmationModal");
 
-    <div class="container mt-3">
-        <!-- Affichage des messages -->
-        <?php if (isset($message_insert) || isset($message_update) || isset($message_delete)): ?>
-            <div class="alert <?php echo (isset($message_insert) && strpos($message_insert, 'succès') !== false) || (isset($message_update) && strpos($message_update, 'succès') !== false) || (isset($message_delete) && strpos($message_delete, 'succès') !== false) ? 'alert-success' : 'alert-danger'; ?>" role="alert">
-                <?php echo isset($message_insert) ? $message_insert : ''; ?>
-                <?php echo isset($message_update) ? $message_update : ''; ?>
-                <?php echo isset($message_delete) ? $message_delete : ''; ?>
-            </div>
-        <?php endif; ?>
+    // Mettez en place ici le comportement des boutons de confirmation
+    yesButton.onclick = function() {
+        // Vous pouvez implémenter ici la logique de suppression
+        console.log("Suppression du jeu avec l'ID:", gameId);
+        // Fermez la fenêtre modale après la suppression
+        modal.style.display = "none";
+    }
+
+    noButton.onclick = function() {
+        modal.style.display = "none"; // Fermez simplement la fenêtre modale si "non" est cliqué
+    }
+
+    // Affichez la fenêtre modale
+    modal.style.display = "block";
+
+    // Fermez la fenêtre modale lorsqu'on clique sur le bouton de fermeture
+    closeButton.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Fermez la fenêtre modale lorsqu'on clique en dehors de celle-ci
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+    </script>
+                <button type="submit" class="btn btn-primary" name="ajouter">Ajouter</button>
+            </form>
+        </div>
     </div>
 </main>
 
