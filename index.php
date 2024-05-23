@@ -33,7 +33,7 @@
                 </div>
                 <!--Bouton modif--> 
                 <div id="btn_modif" class="btn_modif">
-                    <img src="asset/img/icon-stylo-blanc.png" alt="Modifier le jeu">
+                    <img id="img_stylo" src="asset/img/icon-stylo-blanc.png" alt="Bouton pour modifier le jeu">
                 </div>
             </div>
         <?php endwhile; ?>
@@ -41,7 +41,7 @@
     
     <!-- Bouton d'ajout de jeu -->
     <div id="btn_add" class="btn_add">
-        <img src="asset/img/plus.png" alt="Ajout de jeux" class="icone">
+        <img  src="asset/img/plus.png" alt="Bouton pour modifier le jeu">
     </div>
 
     <!-- Fenêtre modale pour l'ajout de jeu -->
@@ -131,6 +131,24 @@
         }
     }
 }
+
+   // Sélection de tous les éléments avec la classe 'img_stylo'
+   var imgElements = document.querySelectorAll("#img_stylo");
+
+// Ajout d'un écouteur d'événements à chaque élément
+imgElements.forEach(function(img) {
+    // Ajout d'un écouteur d'événements pour l'événement mouseover (survol)
+    img.addEventListener("mouseover", function() {
+        // Changer la source de l'image au survol
+        this.src = "asset/img/icon-stylo-noir.png";
+    });
+
+    // Ajout d'un écouteur d'événements pour l'événement mouseout (sortie du survol)
+    img.addEventListener("mouseout", function() {
+        // Revenir à la source d'image par défaut lorsque le curseur sort de l'image
+        this.src = "asset/img/icon-stylo-blanc.png";
+    });
+});
     </script>
                 <button type="submit" class="btn btn-primary" name="ajouter">Ajouter</button>
             </form>

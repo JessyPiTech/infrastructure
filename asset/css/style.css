@@ -340,15 +340,8 @@ header {
     text-align: center;
 }
 
-.btn_modif{
-    height:20px;
-    width:20px;
-}
-
-.btn_modif img {
-    display: block; 
-}
-
-.btn_modif:hover img {
-    content: url('asset/img/icon-stylo-noir.png');
+.btn_modif {
+    height: 20px;
+    width: 20px;
+    background-size: cover;
 }

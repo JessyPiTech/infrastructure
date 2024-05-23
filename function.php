@@ -31,9 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Vérifier l'extension et le type MIME du fichier
             $file_extension = pathinfo($_FILES["game_image"]["name"], PATHINFO_EXTENSION);
             $file_mime_type = mime_content_type($_FILES["game_image"]["tmp_name"]);
-
-            if ($file_mime_type == 'image/svg+xml' || $file_extension == 'svg' || $file_extension == 'svg.png' || $file_extension == 'svg.jpg' || $file_extension == 'svg.jpeg') {
-                $message_insert = "Les fichiers SVG et SVG.PNG ne sont pas autorisés.";
+        
+            if ($file_mime_type == 'image/svg+xml' || $file_extension == 'svg' || strpos($file_extension, 'svg.') !== false) {
+                $message_insert = "Les fichiers SVG et les fichiers ayant 'svg' dans leur extension ne sont pas autorisés.";
             } else {
                 // Chemin où enregistrer l'image téléchargée
                 $target_dir = "uploads/";
