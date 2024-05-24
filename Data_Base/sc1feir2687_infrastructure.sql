@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : ven. 24 mai 2024 à 09:54
--- Version du serveur : 10.6.18-MariaDB
--- Version de PHP : 8.1.28
+-- Hôte : 127.0.0.1:3306
+-- Généré le : dim. 26 mai 2024 à 20:48
+-- Version du serveur : 8.3.0
+-- Version de PHP : 8.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,99 +24,47 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user`
+-- Structure de la table `game`
 --
 
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `pseudo` varchar(20) NOT NULL DEFAULT 'user_default',
-  `email` varchar(100) NOT NULL,
-  `password` varchar(25) NOT NULL,
-  `level` int(10) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `game`;
+CREATE TABLE IF NOT EXISTS `game` (
+  `game_id` int NOT NULL AUTO_INCREMENT COMMENT 'id du jeu',
+  `game_name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'nom du jeu',
+  `game_publisher` varchar(50) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'dev du jeu',
+  `game_note` int NOT NULL COMMENT 'note sur 5',
+  `game_evaluation_date` datetime NOT NULL COMMENT 'date d''evaluition',
+  `game_image` varchar(100) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'image du jeu',
+  PRIMARY KEY (`game_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `user`
+-- Déchargement des données de la table `game`
 --
 
-INSERT INTO `user` (`id`, `pseudo`, `email`, `password`, `level`) VALUES
-(4, 'elouan', 'elouan@chedaleux', '123456@', 1),
-(5, 'root', 'uiui@com', 'mE6V758enZ ', 1),
-(6, 'sloth4roues', 'nathan.walter@ynov.com', '123crepes', 1),
-(7, 'erwann', 'toto@toto.fr', 'erwann', 1),
-(8, 'Hyman', 'elouan.chedalleux@gmail.com', '123456789', 1);
+INSERT INTO `game` (`game_id`, `game_name`, `game_publisher`, `game_note`, `game_evaluation_date`, `game_image`) VALUES
+(15, 'Animal crossing', 'Nintendo', 4, '2024-05-24 21:33:12', 'uploads/animalcrossing.jpg'),
+(16, 'MW2', 'Ubisoft', 5, '2024-05-24 21:33:48', 'uploads/callofdutyMW3.jpg'),
+(17, 'Gta 5', 'Rockstar', 5, '2024-05-24 21:34:31', 'uploads/gta5.jpg'),
+(18, 'Mincraft', 'Mojang', 5, '2024-05-24 21:35:46', 'uploads/mincraft.png'),
+(21, 'urban rumble', 'Nathan et Elouan', 5, '2024-05-26 22:42:40', 'uploads/logo_urban_rumble_DEFINITIF.png');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `video_game`
+-- Structure de la table `user`
 --
 
-CREATE TABLE `video_game` (
-  `game_id` int(5) NOT NULL COMMENT 'id du jeu',
-  `game_name` varchar(50) NOT NULL COMMENT 'nom du jeu',
-  `game_publisher` varchar(50) NOT NULL COMMENT 'dev du jeu',
-  `game_note` int(5) NOT NULL COMMENT 'note sur 5',
-  `game_evaluation_date` datetime(5) NOT NULL COMMENT 'date d''evaluition',
-  `game_image` varchar(100) NOT NULL COMMENT 'image du jeu'
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `user_id` int NOT NULL AUTO_INCREMENT,
+  `user_pseudo` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'user_default',
+  `user_email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `user_password` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `user_level` int NOT NULL DEFAULT '1',
+  `user_creation` datetime NOT NULL,
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `video_game`
---
-
-INSERT INTO `video_game` (`game_id`, `game_name`, `game_publisher`, `game_note`, `game_evaluation_date`, `game_image`) VALUES
-(1, 'Nom du Jeu', 'Nom du Développeur', 4, '2024-05-07 10:52:22.00000', 'PJP/image.png'),
-(3, 'urban rubelle', 'natou et elouan', 5, '2024-05-07 11:01:35.00000', 'uploads/logo_urban_rumble_DEFINITIF.png'),
-(4, 'jeu', 'jessy', 3, '2024-05-14 10:14:36.00000', 'uploads/troll_vite_fais.jpg'),
-(5, 'kok', '45', 4, '2024-05-14 11:35:23.00000', 'uploads/vecteezy_logo-de-l-application-spotify-png-icone-spotify-png_18930579.png'),
-(6, 'Ours', 'Jessy', 4, '2024-05-16 12:54:16.00000', 'uploads/1.jpg'),
-(7, 'test', 'test', 1, '2024-05-16 12:55:54.00000', 'uploads/test.svg'),
-(8, 'test', 'test', 1, '2024-05-16 12:56:00.00000', 'uploads/test.svg'),
-(9, 'casipo', 'lop', 1, '2024-05-23 11:11:15.00000', 'uploads/Design sans titre (5).png'),
-(10, 'casipo', 'lop', 1, '2024-05-23 11:11:15.00000', 'uploads/Design sans titre (5).png'),
-(12, 'papap', 'natou et elouan', 1, '2024-05-23 11:20:35.00000', 'uploads/JoCOX301.svg'),
-(13, 'casipo', 'lop', 2, '2024-05-23 11:47:15.00000', 'uploads/JoCOX301.svg'),
-(14, 'mpl;', '23', 4, '2024-05-23 11:49:08.00000', 'uploads/JoCOX301.svg'),
-(15, '', '', 0, '2024-05-23 12:07:31.00000', 'uploads/JoCOX301.svg'),
-(16, 'ahhaha', 'kok', 4, '2024-05-23 13:01:15.00000', 'uploads/JoCOX301.svg'),
-(17, 'dernier', '45', 3, '2024-05-23 13:01:45.00000', 'uploads/JoCOX301.svg'),
-(18, 'casipo', 'zdz', 3, '2024-05-23 13:03:24.00000', 'uploads/JoCOX301.svg'),
-(19, 'CIUUUUUUU', 'CIOU', 2, '2024-05-23 13:42:24.00000', 'uploads/150px-Flag_of_Germany.svg.jpg'),
-(20, 'rrrrrrrrrrrrr', 'rrrrrrr', 3, '2024-05-23 13:48:42.00000', 'uploads/150px-Flag_of_the_United_States.svg.jpg'),
-(21, 'ghfjgj', 'fdsfdsfd', 1, '2024-05-23 13:49:08.00000', 'uploads/150px-Flag_of_Germany.svg.jpg');
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `video_game`
---
-ALTER TABLE `video_game`
-  ADD PRIMARY KEY (`game_id`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT pour la table `video_game`
---
-ALTER TABLE `video_game`
-  MODIFY `game_id` int(5) NOT NULL AUTO_INCREMENT COMMENT 'id du jeu', AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

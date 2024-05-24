@@ -1,3 +1,8 @@
+:root {
+    --black: #000000;
+    --white: #ffffff;
+}
+
 /* Réglages généraux */
 main {
     min-height: 60vh;
@@ -7,7 +12,7 @@ main {
 
 body {
     margin: 0;
-    font-family: ui-sans-serif,-apple-system,system-ui,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,Helvetica,Apple Color Emoji,Arial,Segoe UI Emoji,Segoe UI Symbol;
+    font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, Helvetica, Apple Color Emoji, Arial, Segoe UI Emoji, Segoe UI Symbol;
 }
 
 header {
@@ -20,7 +25,7 @@ header {
 
 /* Barre de navigation */
 .navbar {
-    background-color: #000000;
+    background-color: var(--black);
     padding: 10px 0;
 }
 
@@ -42,12 +47,12 @@ header {
 }
 
 .nav-link {
-    color: #fff;
+    color: var(--white);
     text-decoration: none;
 }
 
 .navbar-brand {
-    color: #fff;
+    color: var(--white);
     font-size: 24px;
 }
 
@@ -58,7 +63,7 @@ header {
 .navbar-toggler {
     border: none;
     background-color: transparent;
-    color: #fff;
+    color: var(--white);
     font-size: 24px;
 }
 
@@ -71,12 +76,12 @@ header {
 }
 
 .navbar-nav .nav-link {
-    color: #fff;
+    color: var(--white);
     font-size: 18px;
 }
 
 .navbar-nav .nav-link:hover {
-    color: #ccc;
+    color: var(--white);
 }
 
 /* Cartes */
@@ -97,16 +102,14 @@ header {
     z-index: 1000;
 }
 
-
+/* login et register css */
 .container_inscription_login {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 60vh;
-    
 }
 
-/* Conteneur pour la carte */
 .card_container {
     display: flex;
     justify-content: center;
@@ -127,19 +130,19 @@ header {
     transition: transform 0.6s;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 1); /* Ajout de l'ombre */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1); 
 }
 
 .front {
-    background-color: rgb(255, 255, 255);
-    color: #000000;
+    background-color: var(--white);
+    color: var(--black);
     text-align: center;
 }
 
 .back {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--white);
     transform: rotateY(180deg);
-    color: #000000;
+    color: var(--black);
     text-align: center;
 }
 
@@ -160,18 +163,18 @@ header {
     transform: rotateY(-180deg);
 }
 
-/*inscription css*/
+/* inscription css */
 .container_inscription h2 {
     font-size: 28px;
     margin: 0 0 20px 0;
     text-align: center;
 }
 
-/*inscription css*/
+/* inscription css */
 .form-group {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Aligner les éléments horizontalement à gauche */
+    align-items: flex-start;
     width: 100%;
     margin: 15px 0;
 }
@@ -182,7 +185,7 @@ header {
 }
 
 .form-group p {
-    margin: 5px 0 0; /* Modifier les marges */
+    margin: 5px 0 0; 
 }
 
 .form-group input {
@@ -195,26 +198,27 @@ header {
     border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 40px;
     padding: 5px 10px;
-    color: #000000;
+    color: var(--black);
     box-sizing: border-box;
     margin: 0 auto;
-    border: 2px solid #000000;
+    border: 2px solid var(--black);
 }
 
 .form-group input::placeholder {
-    color: #000000;
+    color: var(--black);
 }
+
 .container_inscription .btn-inscription {
     width: 100%;
     height: 40px;
-    background-color: #000000;
+    background-color: var(--black);
     border: none;
     outline: none;
     border-radius: 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     cursor: pointer;
     font-size: 16px;
-    color: #ffffff;
+    color: var(--white);
     font-weight: 600;
 }
 
@@ -222,16 +226,15 @@ header {
     font-size: 14.5px;
     margin: 20px 0 15px;
     text-align: center;
-
 }
 
 .login-link p {
-    color: #000000;
-    margin: 5px 0 0; /* Réduit la marge pour coller davantage au-dessus de la boîte */
+    color: var(--black);
+    margin: 5px 0 0; 
 }
 
 .login-link p a {
-    color: #000000;
+    color: var(--black);
     text-decoration: none;
     font-weight: 600;
 }
@@ -254,11 +257,11 @@ header {
 }
 
 .btn_add img {
-    max-width: 100%; /* Pour que l'image ne dépasse pas les dimensions du bouton */
-    max-height: 100%; /* Pour que l'image ne dépasse pas les dimensions du bouton */
+    max-width: 100%; 
+    max-height: 100%; 
 }
 
-.icone{
+.icone {
     width: 100px;
 }
 
@@ -272,27 +275,36 @@ header {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.5); 
+    background-color: rgba(var(--black), 0.5); 
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; 
+    background-color: var(--white);
+    margin: 0 auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
     max-width: 600px; 
 }
 
+
 .delete {
     position: absolute;
-    top: 10px; 
-    right: 10px; 
+    top: 10px;
+    right: 45px; 
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #ff3f3f;
-    font-size: 28px;
+    font-size: 18px; 
     font-weight: bold;
     cursor: pointer;
     z-index: 1;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
 }
 
 .delete:hover,
@@ -314,21 +326,38 @@ header {
     text-decoration: none;
     cursor: pointer;
 }
+
 .card-container {
     display: grid;
-    grid-template-columns: repeat(4, minmax(200px, 1fr)); 
-    gap: 20px; 
-    margin: 0 auto; 
-    max-width: 1200px; 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 20px; 
 }
 
 .card {
     position: relative;
-    background-color: #ffffff;
+    background-color: var(--white);
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    font-size: 16px; 
+    font-family: "Arial", sans-serif; 
+    line-height: 1.5; 
+    color: #333; 
+}
+
+.card-description {
+    font-style: italic; 
+    color: #666;
+}
+
+.card-title {
+    font-weight: bold; 
+    font-size: 18px; 
+    margin-bottom: 10px;
 }
 
 .card img {
@@ -344,7 +373,7 @@ header {
     position: relative;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .card-body {
@@ -354,34 +383,165 @@ header {
 
 .btn_modif {
     position: absolute;
-    top: 10px; 
-    right: 10px; 
-    width: 20px;
-    height: 20px;
-    background-size: cover;
-    z-index: 1; 
-    margin-left: 10px; 
+    top: 10px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
 }
 
-footer{
-    display: flex; flex-direction: column; align-items: center; background-color: black;
+.btn_modif img {
+    width: 15px;
+    height: 15px;
 }
 
-top{
-    width: 100%; background: linear-gradient(45deg, red, blue); height: 15px;
-}
-midel p{
-    color: #fff;
-}
 
-midel {
+footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: var(--black);
+    color: var(--white);
+    padding: 20px 0;
 }
 
+.top {
+    width: 100%;
+    background: linear-gradient(45deg, #ff0000, #0000ff);
+    height: 15px;
+}
+
+.midel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.midel p {
+    margin: 5px 0;
+}
 
 .button-container {
-    display: flex;
-    align-items: center;
+    margin-top: 10px;
 }
+
+.footer-link {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: #cccccc;
+}
+
+.logout-button {
+    background-color: transparent;
+   
+
+ color: var(--white);
+    border: 1px solid var(--white);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-top: 10%;
+}
+
+.logout-button:hover {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+#subject,
+#message {
+    width: calc(100% - 20px);
+    max-width: 400px;
+    height: 35px; 
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 20px;
+    padding: 5px 10px;
+    color: var(--black);
+    box-sizing: border-box;
+    margin: 0 auto;
+    border: 2px solid var(--black);
+}
+
+#message {
+    height: 150px; 
+    resize: vertical; 
+}
+
+.profile-container {
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+.profile-header {
+    text-align: center;
+}
+.profile-item {
+    margin: 10px 0;
+}
+
+/* Responsive */
+@media only screen and (max-width: 500px) {
+    
+    .container_inscription_login, .card_container {
+        padding: 10%;
+    }
+
+    .form_card {
+        padding: 5px;
+    }
+
+    .container_inscription h2 {
+        font-size: 20px;
+    }
+
+    .form-group input {
+        height: 25px;
+        padding: 3px;
+    }
+
+    .container_inscription .btn-inscription {
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .container_inscription.form_card.front {
+        margin: 0 10px; 
+    }
+    
+    .midel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        text-align: center; 
+    }
+    
+    .midel p,
+    .footer-link,
+    .logout-button {
+        display: block; 
+        margin: 10px 0; 
+    }
+}
+
+

@@ -8,5 +8,4 @@ function connectDB() {
     }
     return $conn;
 }
-
 ?>

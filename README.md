@@ -16,14 +16,14 @@ Le but de notre projet était de créer un site web permettant de communiquer av
 - **Base de données** : MariaDB (via phpMyAdmin, fourni par XAMPP)
 
 ## Installation du Projet
-Pour installer notre projet, suivez les étapes ci-dessous :
+Une fois le ripo cloné, suivez les étapes ci-dessous :
 
-1. **Pré-requis** : Assurez-vous d'avoir XAMPP installé sur votre machine.
+1. **Pré-requis** : Assurez-vous d'avoir XAMPP, Wamp ou bien un hebergement disposent de mysql et apache.
 
 2. **Création de l'utilisateur et de la base de données** :
-   - Accédez à phpMyAdmin via l'interface XAMPP.
+   - Accédez à vôtre gestionnaire de base de donnée (phpMyAdmin).
    - Créez un nouvel utilisateur et assignez les privilèges nécessaires.
-   - Créez une nouvelle base de données pour le projet.
+   - Importer la base de données "sc1feir2687_infrastructure.sql" du dossier Data_Base .
 
 3. **Configuration des Crédentiels** :
    - Créez un fichier `credentials.php` dans le répertoire de votre projet avec le contenu suivant :
@@ -38,15 +38,18 @@ Pour installer notre projet, suivez les étapes ci-dessous :
    - Remplacez `"Votre nom d'utilisateur"`, `"Son mdp"`, et `"Le nom de votre base de données"` par les informations appropriées.
 
 4. **Déploiement** :
-   - Placez les fichiers de votre projet dans le répertoire `htdocs` de XAMPP.
-   - Assurez-vous que le serveur Apache et MySQL sont démarrés dans le panneau de contrôle XAMPP.
-
+   - Assurez-vous que le serveur Apache et MySQL sont démarrés.
+   
 5. **Accès à l'application** :
+   *En Local* :
    - Ouvrez un navigateur web et accédez à `http://localhost/nom_de_votre_projet` pour voir votre application en action.
+   
+   *En ligne*:
+   - Ouvrez un navigateur web et tappez votre nom de domaine où est mis votre site et base de donnée. 
 
-Cette configuration simple permet de connecter votre application PHP à une base de données MariaDB via XAMPP, facilitant ainsi le développement et le test local de votre projet.
+Cette configuration simple permet de connecter votre application PHP à une base de données, facilitant ainsi le développement et le test local de votre projet.
 
 ## Conclusion
-Malgré les contraintes de temps et les défis techniques rencontrés, notamment les problèmes de réseau entre les VM, nous avons réussi à établir une base de communication entre PHP et MariaDB, démontrant ainsi notre capacité à surmonter les obstacles et à travailler efficacement en équipe.
+Malgré les contraintes de temps et les défis techniques rencontrés, notamment les problèmes de réseau entre les VM, nous avons réussi à établir une base de communication entre PHP et une base de donnée, démontrant ainsi notre capacité à surmonter les obstacles et à travailler efficacement en équipe.
 
-Pour toute question ou clarification, n'hésitez pas à nous contacter.
+Pour toute question ou clarification, n'hésitez pas à nous contacter directement via l'onglet contacte une fois connecter et votre page en ligne.

@@ -1,14 +1,14 @@
+<div class="top"></div>
 <footer>
-    <top></top>
-    <midel>
-        <p>Numero du support :</p>
+    <div class="midel">
+        <p>Numéro du support :</p>
         <p>00 00 00 00 00</p>
-        <a href="https://github.com/jessyPICK/ton-pote-cast/blob/main/politique-confidentialit%C3%A9">Politique de confidentialité</a>
-        <a href="https://github.com/jessyPICK/ton-pote-cast/blob/main/condition-d'utilisation">Politique d'utilisation</a>
+        <div class="button-container">
+            <a href="https://github.com/jessyPICK/ton-pote-cast/blob/main/politique-confidentialité" class="footer-link">Politique de confidentialité</a>
+            <a href="https://github.com/jessyPICK/ton-pote-cast/blob/main/condition-d'utilisation" class="footer-link">Politique d'utilisation</a>
+        </div>
         <form method="post">
-            <button type="submit" name="logout">Déconnexion</button>
+            <button type="submit" name="logout" class="logout-button">Déconnexion</button>
         </form>
-    </midel>
+    </div>
 </footer>
-</body>
-</html>
