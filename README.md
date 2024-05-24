@@ -3,6 +3,13 @@
 ## But du Projet
 Le but de notre projet était de créer un site web permettant de communiquer avec une base de données MySQL/MariaDB, hebergé comme nous le souhaitons. Ce site web devait afficher les éléments que les personnes ajoutent sur le site, ces données sont stocké dans la base de données.
 
+## En quelque images
+![alt text](./asset/img/5.png)
+![alt text](./asset/img/6.png)
+![alt text](./asset/img/1.png)
+![alt text](./asset/img/2.png)
+![alt text](./asset/img/3.png)
+![alt text](./asset/img/4.png)
 ## Cadre de Développement
 - **Établissement** : École d'informatique
 - **Niveau d'études** : Première année (B1)

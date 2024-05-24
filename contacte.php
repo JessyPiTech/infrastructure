@@ -1,19 +1,24 @@
 <?php //require_once "../connec.php";?>
 <?php require_once "header.php";?>
 <?php require_once "connec.php";?>
+<?php require_once "function.php";?>
 <?php 
+
+
+
 
     if ($_SESSION['user_email'] != null) {
         $user_email = $_SESSION['user_email'];
-    } else {
+    } else  {
         $user_email = '';
     }       
 ?>
-<main>
+
+<main class="flex-base">
 <div class="container_inscription_login">
         <div class="card_container">
             <div class="container_inscription form_card front">
-                <form method="post">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <h2>Envoyer un Email</h2>
         
                     <div class="form-group">

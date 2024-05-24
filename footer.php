@@ -1,6 +1,6 @@
 <div class="top"></div>
-<footer>
-    <div class="midel">
+<footer class="flex-base">
+    <div class="midel flex-base">
         <p>Numéro du support :</p>
         <p>00 00 00 00 00</p>
         <div class="button-container">

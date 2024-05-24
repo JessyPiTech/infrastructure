@@ -9,8 +9,10 @@ if (session_status() == PHP_SESSION_NONE) {
 
 $user_pseudo = 'connexion';
 if (isset($_SESSION['user_pseudo']) && $_SESSION['user_pseudo'] != null) {
-    $user_pseudo = $_SESSION['user_pseudo'];    
+    $user_pseudo = $_SESSION['user_pseudo'];
+    $user_id = $_SESSION['user_id'];
 }
+//print_r($_SESSION);
 ?>
 
 
@@ -20,7 +22,9 @@ if (isset($_SESSION['user_pseudo']) && $_SESSION['user_pseudo'] != null) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
+    <link rel="stylesheet" href="asset/css/normalize.css">
     <link rel="stylesheet" href="asset/css/style.css">
+    
 </head>
 
 <body>

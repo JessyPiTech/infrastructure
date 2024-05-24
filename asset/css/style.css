@@ -3,7 +3,18 @@
     --white: #ffffff;
 }
 
-/* Réglages généraux */
+.flex-base{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.flex-base-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 main {
     min-height: 60vh;
     flex: 1;
@@ -11,14 +22,12 @@ main {
 }
 
 body {
-    margin: 0;
     font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, Helvetica, Apple Color Emoji, Arial, Segoe UI Emoji, Segoe UI Symbol;
 }
 
 header {
     margin: 0;
     padding: 0;
-    top: 0;
     width: 100%;
     z-index: 1000;
 }
@@ -87,6 +96,8 @@ header {
 /* Cartes */
 .card {
     margin-bottom: 20px;
+    padding: 5%;
+
 }
 
 .card img {
@@ -94,7 +105,7 @@ header {
     object-fit: cover;
 }
 
-/* Bouton d'ajout de jeu */
+
 .add-game-button {
     position: fixed;
     bottom: 20px;
@@ -102,28 +113,21 @@ header {
     z-index: 1000;
 }
 
-/* login et register css */
 .container_inscription_login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 60vh;
 }
 
 .card_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
     position: relative;
     width: 420px;
     perspective: 1000px;
 }
 
-/* Style pour les deux faces de la carte */
 .form_card {
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    flex-direction: column;
     width: 100%;
     position: absolute;
     backface-visibility: hidden;
@@ -163,14 +167,12 @@ header {
     transform: rotateY(-180deg);
 }
 
-/* inscription css */
 .container_inscription h2 {
     font-size: 28px;
     margin: 0 0 20px 0;
     text-align: center;
 }
 
-/* inscription css */
 .form-group {
     display: flex;
     flex-direction: column;
@@ -247,9 +249,7 @@ header {
     height: 100px;
     width: 100px;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
     position: fixed;
     right: 20px;
     bottom: 20px;
@@ -296,9 +296,7 @@ header {
     height: 25px;
     background-color: white;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
     color: #ff3f3f;
     font-size: 18px; 
     font-weight: bold;
@@ -389,9 +387,7 @@ header {
     height: 25px;
     background-color: white;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
     z-index: 1;
     cursor: pointer;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
@@ -404,9 +400,6 @@ header {
 
 
 footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-color: var(--black);
     color: var(--white);
     padding: 20px 0;
@@ -419,9 +412,6 @@ footer {
 }
 
 .midel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     margin-top: 20px;
 }
 
@@ -462,8 +452,8 @@ footer {
     color: var(--black);
 }
 
-#subject,
-#message {
+
+#subject,#message {
     width: calc(100% - 20px);
     max-width: 400px;
     height: 35px; 
@@ -529,19 +519,108 @@ footer {
     }
     
     .midel {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         margin-top: 20px;
         text-align: center; 
     }
     
-    .midel p,
-    .footer-link,
-    .logout-button {
+    .midel p,.footer-link,.logout-button {
         display: block; 
         margin: 10px 0; 
     }
 }
 
 
+
+.etoiles {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 26px;
+    box-shadow: 0 0 10px rgb(144 137 137);
+    margin: 4%;
+    padding: 2%;
+    justify-content: center;
+    
+}
+
+.etoile {
+    width: 27px;
+    height: 25px;
+    background-size: cover;
+    background-image: url(../img/etoile-vide.png);
+    cursor: pointer;
+    margin: 1%;
+
+}
+
+.etoile.plein {
+    background-image: url('../img/etoile-plein.png');
+}
+
+.etoile.demie {
+    background-image: url('../img/etoile-demie.png');
+}
+
+
+.info-jeu{
+    width: 80%;
+    box-shadow: 0 0 10px rgb(144 137 137);
+    padding: 2%;
+    border-radius: 20px;
+    font-size: 25px;
+}
+
+jeu{
+    width: 80%;
+    
+}
+jeu img{
+    width: 100%;
+}
+.game{
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(144 137 137);
+}
+
+avis{
+    width: 80%;
+}
+.avis {
+    border-radius: 20px;
+    margin-top: 20px;
+    text-align: left;
+    justify-content: center;
+    box-shadow: 0 0 10px rgb(144 137 137);
+    padding: 2%;
+    width: 100%;
+    max-width: 600px;
+}
+.avis form {
+    
+    width: 80%;
+    
+}
+.avis input, .avis textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+.avis input[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.avis input[type="submit"]:hover {
+    background-color: #218838;
+}
+.avis-list {
+    list-style-type: none;
+    padding: 0;
+}
+.avis-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}

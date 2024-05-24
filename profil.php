@@ -4,9 +4,9 @@ require_once "header.php";
 require_once "connec.php";
 require_once "function.php";
 
-[$user_pseudo, $user_email, $user_level, $user_creation] = getUserProfile($conn, $user_pseudo);
+[$user_pseudo, $user_id, $user_email, $user_level, $user_creation] = getUserProfile($conn, $user_pseudo);
 ?>
-<main>
+<main class="flex-base">
     <div class="profile-container">
         <div class="profile-header">
             <h2>Profil de <?php echo htmlspecialchars($user_pseudo); ?></h2>

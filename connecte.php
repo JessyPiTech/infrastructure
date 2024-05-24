@@ -2,8 +2,8 @@
 <?php require_once "header.php";?>
 <?php require_once "function.php";?>
 
-<main>
-<div class="container_inscription_login">
+<main class="flex-base">
+<div class="container_inscription_login flex-base">
         <div class="card_container">
             <!-- Formulaire d'inscription -->
             <div class="container_inscription form_card front">
