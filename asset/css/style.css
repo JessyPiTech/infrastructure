@@ -283,13 +283,16 @@ header {
     width: 80%;
     max-width: 600px; 
 }
+
 .delete {
     position: absolute;
+    top: 10px; 
+    right: 10px; 
     color: #ff3f3f;
-    float: right;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+    z-index: 1;
 }
 
 .delete:hover,
@@ -320,7 +323,7 @@ header {
 }
 
 .card {
-    position: relative; 
+    position: relative;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -337,15 +340,27 @@ header {
     border-top-right-radius: 10px;
 }
 
+.card-img-container {
+    position: relative;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden; 
+}
+
 .card-body {
     padding: 20px;
     text-align: center;
 }
 
-.btn_modif img{
-    height: 20px;
+.btn_modif {
+    position: absolute;
+    top: 10px; 
+    right: 10px; 
     width: 20px;
+    height: 20px;
     background-size: cover;
+    z-index: 1; 
+    margin-left: 10px; 
 }
 
 footer{
@@ -362,5 +377,11 @@ midel p{
 midel {
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+
+.button-container {
+    display: flex;
     align-items: center;
 }
