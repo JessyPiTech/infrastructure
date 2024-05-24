@@ -1,6 +1,6 @@
 <?php
 // Paramètres de connexion à la base de données
-require_once "coBDSM.php";
+require_once "coDB.php";
 
 $conn = connectDB();
 // Déclaration des variables pour les messages

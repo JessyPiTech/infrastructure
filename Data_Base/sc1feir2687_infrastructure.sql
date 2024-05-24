@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 24 mai 2024 à 09:57
+-- Généré le : ven. 24 mai 2024 à 09:54
 -- Version du serveur : 10.6.18-MariaDB
 -- Version de PHP : 8.1.28
 
@@ -34,6 +34,17 @@ CREATE TABLE `user` (
   `password` varchar(25) NOT NULL,
   `level` int(10) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `pseudo`, `email`, `password`, `level`) VALUES
+(4, 'elouan', 'elouan@chedaleux', '123456@', 1),
+(5, 'root', 'uiui@com', 'mE6V758enZ ', 1),
+(6, 'sloth4roues', 'nathan.walter@ynov.com', '123crepes', 1),
+(7, 'erwann', 'toto@toto.fr', 'erwann', 1),
+(8, 'Hyman', 'elouan.chedalleux@gmail.com', '123456789', 1);
 
 -- --------------------------------------------------------
 
@@ -99,7 +110,7 @@ ALTER TABLE `video_game`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `video_game`

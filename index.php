@@ -3,42 +3,31 @@
 <?php require_once "function.php";?>
 <?php require_once "./connec.php";?>
 
-
 <main>
     <div class="card-container">
-        <?php while ($jeu = mysqli_fetch_assoc($resultat)): ?>
-            <div class="card">
-                <?php $image_url = !empty($jeu['game_image']) ? $jeu['game_image'] : 'https://placehold.co/300x300';?>
-                <img class="card-img-top" src="<?php echo $image_url; ?>" alt="<?php echo $jeu['game_name']; ?>" onerror="this.onerror=null; this.src='https://placehold.co/300x300';">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $jeu['game_name']; ?></h5>
-                    <p class="card-text">Développeur: <?php echo $jeu['game_publisher']; ?></p>
-                    <p class="card-text">Note: <?php echo $jeu['game_note']; ?>/5</p>
+    <?php while ($jeu = mysqli_fetch_assoc($resultat)): ?>
+    <div class="card">
+        <?php $image_url = !empty($jeu['game_image']) ? $jeu['game_image'] : 'https://placehold.co/300x300';?>
+        <div class="card-img-container">
+            <img class="card-img-top" src="<?php echo $image_url; ?>" alt="<?php echo $jeu['game_name']; ?>" onerror="this.onerror=null; this.src='https://placehold.co/300x300';">
+            <!-- Bouton de suppression -->
+            <span class="delete" onclick="openConfirmationModal(<?php echo $jeu['game_id']; ?>)">&times;</span>
+            <!-- Bouton de modification -->
+            <span class="btn_modif">
+                <img class="img_stylo" src="asset/img/icon-stylo-blanc.png" alt="Bouton pour modifier le jeu">
+            </span>
+        </div>
 
-                    <!-- Bouton de suppression -->
-                    <span class="delete" onclick="openConfirmationModal(<?php echo $jeu['game_id']; ?>)">&times;</span>
-                    <div id="confirmationModal" class="modal">
-                        <!--1-->
-                        <div class="modal-content">
-                            <span id="closeConfirmationModal" class="close">&times;</span>
-                            <h2>Confirmer la suppression</h2>
-                            <p>Êtes-vous sûr de vouloir supprimer ce jeu?</p>
-                            <div>
-                                <button id="yesConfirmationModal" class="btn btn-danger">Oui</button>
-                                <button id="noConfirmationModal" class="btn btn-secondary">Non</button>
-                            </div>
-                        </div>
-                        <!---->
-                    </div>
-                </div>
-                <!--Bouton modif--> 
-                <div id="btn_modif" class="btn_modif">
-                    <img id="img_stylo" src="asset/img/icon-stylo-blanc.png" alt="Bouton pour modifier le jeu">
-                </div>
-            </div>
+        <div class="card-body">
+            <h5 class="card-title"><?php echo $jeu['game_name']; ?></h5>
+            <p class="card-text">Développeur: <?php echo $jeu['game_publisher']; ?></p>
+            <p class="card-text">Note: <?php echo $jeu['game_note']; ?>/5</p>
+        </div>
+    </div>
         <?php endwhile; ?>
     </div>
-    
+
+
     <!-- Bouton d'ajout de jeu -->
     <div id="btn_add" class="btn_add">
         <img  src="asset/img/plus.png" alt="Bouton pour modifier le jeu">

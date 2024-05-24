@@ -1,5 +1,5 @@
 <?php //require_once "../connec.php";?>
-<?php require_once "coBDSM.php";
+<?php require_once "coDB.php";
 
 require_once "header.php";
 $conn = connectDB();
@@ -31,6 +31,7 @@ $conn = connectDB();
                     </div>
                 </form>
             </div>
+            
             <?php
                 if (isset($_POST["register"])) {
                     $pseudo = $_POST['pseudo'];
@@ -42,7 +43,6 @@ $conn = connectDB();
                     $check_stmt->bind_param("s", $pseudo);
                     $check_stmt->execute();
                     $check_result = $check_stmt->get_result();
-
                     if ($check_result->num_rows > 0) {
                         echo '<div class="alert alert-danger" role="alert">Ce pseudo est déjà utilisé. Veuillez choisir un autre.</div>';
                     } else {
@@ -53,7 +53,10 @@ $conn = connectDB();
                         $insert_stmt->bind_param("sss", $pseudo, $email, $hashed_password);
 
                         if ($insert_stmt->execute()) {
-                            echo '<div class="alert alert-success" role="alert">Inscription réussie. Vous pouvez maintenant vous connecter.</div>';
+                            // echo '<div class="alert alert-success" role="alert">Inscription réussie. Vous pouvez maintenant vous connecter.</div>';
+                            // $_SESSION['connected'] = true;
+                            // header("Location: ./index.php"); 
+                            exit;
                         } else {
                             echo '<div class="alert alert-danger" role="alert">Erreur lors de l\'inscription. Veuillez réessayer.</div>';
                         }
@@ -66,7 +69,7 @@ $conn = connectDB();
             
             <!-- Formulaire de connexion -->
             <div class="container_inscription form_card back">
-                <form method="post">
+                <form method="post">    
                     <h2>Connexion</h2>
                     <div class="form-group">
                         <label for="pseudo_login">Pseudo</label>
@@ -88,7 +91,7 @@ $conn = connectDB();
                         echo "1";
                         $pseudo = $_POST['pseudo_login'];
                         $password = $_POST['password_login'];
-                        echo "2";
+                        var_dump("2");
                         
 
                         $sql = "SELECT id, pseudo, password FROM user WHERE pseudo = ? LIMIT 1";

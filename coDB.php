@@ -1,4 +1,5 @@
 <?php
+//connexion a la base de donnée
 function connectDB() {  
     require_once "credentials.php";
     $conn = new mysqli($serveur, $utilisateur, $mot_de_passe, $base_de_donnees);
