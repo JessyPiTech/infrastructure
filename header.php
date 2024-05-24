@@ -1,6 +1,6 @@
 
 
-<?php require_once "../connec.php";?>
+<?php //require_once "../connec.php";?>
 
 <!DOCTYPE html>
 <html lang="fr">

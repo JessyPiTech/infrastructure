@@ -1,4 +1,4 @@
-<?php require_once "../connec.php";?>
+<?php //require_once "../connec.php";?>
 <?php require_once "coBDSM.php";
 
 require_once "header.php";
